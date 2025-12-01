@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative "../lib/aoc"
+
+day_arg = ARGV[0]
+
+if day_arg.nil?
+  abort "Usage: \#{File.basename($PROGRAM_NAME)} DAY [input|sample]"
+end
+
+day = day_arg.to_i
+if day <= 0
+  abort "DAY must be a positive integer"
+end
+
+input_type = ARGV[1] || "input"
+
+Aoc.run(day, input_type)
