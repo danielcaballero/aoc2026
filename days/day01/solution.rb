@@ -8,11 +8,13 @@ class Day01
   end
 
   def part1
-    @moves.reduce([0, START_POSITION]) do |acc, move|
-      calculate_new_position(move, acc[1]).then do |pos|
-        [acc[0] + (pos.zero? ? 1 : 0), pos]
+    total_zero_hits, =
+      @moves.reduce([0, START_POSITION]) do |(total_zero_hits, position), move|
+        new_position = calculate_new_position(move, position)
+        [total_zero_hits + (new_position.zero? ? 1 : 0), new_position]
       end
-    end[0]
+
+    total_zero_hits
   end
 
   def part2
